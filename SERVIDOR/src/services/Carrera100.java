@@ -18,7 +18,7 @@ public class Carrera100 {
 	CyclicBarrier preparados;
 	CyclicBarrier listos;
 	ArrayList<String> llegadaAtletas=new ArrayList<String>();
-	@GET //tipo de petición HTTP
+	/*@GET //tipo de petición HTTP
 	@Produces(MediaType.TEXT_PLAIN) //tipo de texto devuelto
 	@Path("reinicio") //ruta al método
 	public void reinicio(@DefaultValue("4") @QueryParam(value="numAtletas") int numAtletas) //el método debe retornar String
@@ -65,6 +65,14 @@ public class Carrera100 {
 	public String resultados() //el método debe retornar String
 	{
 		return llegadaAtletas.toString();
+	}*/
+	@GET //tipo de petición HTTP
+	@Produces(MediaType.TEXT_PLAIN) //tipo de texto devuelto
+	@Path("saludo") //ruta al método
+	public String saludo() //el método debe retornar String
+	{
+	return "Hola gente!!";
 	}
+
 	}
 
