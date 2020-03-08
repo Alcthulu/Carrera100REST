@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DatosCarrera {
 	private static long inicioCarrera;
 	private static ArrayList<String> llegadaAtletas=new ArrayList<String>();
-	private static int numAtl=2;
+	private static int numAtl=4;
 	private static boolean carrera=false;
 	public static int getNumAtl() {
 		return numAtl;

@@ -15,7 +15,7 @@ public class MainCarrera {
 		
 		int numAtletas=2;
 		ArrayList<Atleta> atletas = new ArrayList<Atleta>();
-		URL url = new URL("http://localhost:8080/Carrera100REST/Carrera100/reinicio");
+		URL url = new URL("http://192.168.0.69:8080/Carrera100REST/Carrera100/reinicio");
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		if(conn.getResponseCode() != 200) {

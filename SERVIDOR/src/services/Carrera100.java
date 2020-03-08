@@ -22,8 +22,8 @@ import javax.ws.rs.core.MediaType;
 public class Carrera100 {
 	long inicioCarrera;
 	DatosCarrera datosCarrera=new DatosCarrera();
-	CyclicBarrier preparados;
-	CyclicBarrier listos;
+	static CyclicBarrier preparados;
+	static CyclicBarrier listos;
 	@GET //tipo de petición HTTP
 	@Produces(MediaType.TEXT_PLAIN) //tipo de texto devuelto
 	@Path("reinicio") //ruta al método
@@ -34,8 +34,8 @@ public class Carrera100 {
 			datosCarrera.clearList();
 			datosCarrera.setInicioCarrera(System.currentTimeMillis());
 			//System.out.println(salida);
-			CyclicBarrier preparados=new CyclicBarrier(datosCarrera.getNumAtl());
-			CyclicBarrier listos=new CyclicBarrier(datosCarrera.getNumAtl());
+			preparados=new CyclicBarrier(datosCarrera.getNumAtl());
+			listos=new CyclicBarrier(datosCarrera.getNumAtl());
 			
 		}
 		return ""+inicioCarrera;
@@ -69,7 +69,8 @@ public class Carrera100 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(datosCarrera.getCarrera()) datosCarrera.setCarrera(false);
+		System.out.println("listo");
+		datosCarrera.setCarrera(false);
 		
 	}
 	@GET //tipo de petición HTTP

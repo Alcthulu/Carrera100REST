@@ -99,13 +99,20 @@ public class Atleta extends Thread {
 	void listo() throws Exception {
 		URL urlListo = null;
 
-			urlListo = new URL("http://localhost:8080/Carrera100REST/Carrera100/listo");
+		urlListo = new URL("http://localhost:8080/Carrera100REST/Carrera100/listo");
 
+		
 		HttpURLConnection connListo = null;
 
 		connListo = (HttpURLConnection) urlListo.openConnection();
 		
 		connListo.setRequestMethod("GET");
+		
+		if (connListo.getResponseCode() != 200) {
+			
+		}else {
+			System.out.println("vuelve");
+		}
 		
 		
 	}
