@@ -27,14 +27,18 @@ public class Carrera100 {
 	@GET //tipo de petición HTTP
 	@Produces(MediaType.TEXT_PLAIN) //tipo de texto devuelto
 	@Path("reinicio") //ruta al método
-	public String reinicio(@DefaultValue("4") @QueryParam(value="numAtletas") int numAtletas) //el método debe retornar String
+	public String reinicio() //el método debe retornar String
 	{
+		if(datosCarrera.getCarrera()==false) {
+			datosCarrera.setCarrera(true);
 			datosCarrera.clearList();
 			datosCarrera.setInicioCarrera(System.currentTimeMillis());
 			//System.out.println(salida);
-			CyclicBarrier preparados=new CyclicBarrier(numAtletas);
-			CyclicBarrier listos=new CyclicBarrier(numAtletas);
-			return ""+inicioCarrera;
+			CyclicBarrier preparados=new CyclicBarrier(datosCarrera.getNumAtl());
+			CyclicBarrier listos=new CyclicBarrier(datosCarrera.getNumAtl());
+			
+		}
+		return ""+inicioCarrera;
 	}
 	@GET //tipo de petición HTTP
 	@Produces(MediaType.TEXT_PLAIN) //tipo de texto devuelto
@@ -65,6 +69,7 @@ public class Carrera100 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		if(datosCarrera.getCarrera()) datosCarrera.setCarrera(false);
 		
 	}
 	@GET //tipo de petición HTTP
@@ -73,7 +78,7 @@ public class Carrera100 {
 	public String llegada( @QueryParam(value="dorsal") int dorsal) //el método debe retornar String
 	{
 		double tiempoTotal= (double)(((double)(System.currentTimeMillis() - (double)datosCarrera.getInicioCarrera()))/1000.);
-		String  tiempoDorsal= "Dorsal: "+dorsal+" Tiempo: "+String.format("%.3f", tiempoTotal);
+		String  tiempoDorsal= "Dorsal: "+dorsal+" Tiempo: "+String.format("%f", tiempoTotal);
 		
 		datosCarrera.getLlegadaAtletas().add(tiempoDorsal);
 		

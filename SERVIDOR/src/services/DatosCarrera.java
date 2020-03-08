@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class DatosCarrera {
 	private static long inicioCarrera;
 	private static ArrayList<String> llegadaAtletas=new ArrayList<String>();
-	private static int numAtl;
+	private static int numAtl=2;
+	private static boolean carrera=false;
 	public static int getNumAtl() {
 		return numAtl;
 	}
@@ -28,6 +29,12 @@ public class DatosCarrera {
 	}
 	public void setLlegadaAtletas(ArrayList<String> llegadaAtletas) {
 		this.llegadaAtletas = llegadaAtletas;
+	}
+	public static boolean getCarrera() {
+		return carrera;
+	}
+	public static void setCarrera(boolean carrera) {
+		DatosCarrera.carrera = carrera;
 	}
 	
 }
