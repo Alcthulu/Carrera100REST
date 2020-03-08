@@ -31,8 +31,8 @@ public class MainCarrera {
 		for(int i=0; i<numAtletas; i++) {
 			atletas.get(i).start();
 		}
-		for(int i=0; i<numAtletas; i++) {
-			while(atletas.get(i).isAlive()) {}
+		for(Thread t : atletas) {
+			t.join();
 		}
 		//TimeUnit.SECONDS.sleep(12);
 		
