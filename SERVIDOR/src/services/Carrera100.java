@@ -32,7 +32,6 @@ public class Carrera100 {
 		if(datosCarrera.getCarrera()==false) {
 			datosCarrera.setCarrera(true);
 			datosCarrera.clearList();
-			datosCarrera.setInicioCarrera(System.currentTimeMillis());
 			//System.out.println(salida);
 			preparados=new CyclicBarrier(datosCarrera.getNumAtl());
 			listos=new CyclicBarrier(datosCarrera.getNumAtl());
@@ -70,6 +69,7 @@ public class Carrera100 {
 			e.printStackTrace();
 		}
 		System.out.println("listo");
+		datosCarrera.setInicioCarrera(System.currentTimeMillis());
 		datosCarrera.setCarrera(false);
 		
 	}
