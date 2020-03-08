@@ -41,7 +41,7 @@ private static void resultado() throws Exception {
 		URL urlListo = null;
 		StringBuilder dorsal = new StringBuilder();
 		
-		urlListo = new URL("http://localhost:8080/Carrera100REST/Carrera100/resultados");
+		urlListo = new URL("http://192.168.0.69:8080/Carrera100REST/Carrera100/resultados");
 		
 		HttpURLConnection connListo = null;
 		connListo = (HttpURLConnection) urlListo.openConnection();
