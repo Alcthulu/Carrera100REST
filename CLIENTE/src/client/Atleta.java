@@ -63,7 +63,7 @@ public class Atleta extends Thread {
 		URL urlListo = null;
 		StringBuilder dorsal = new StringBuilder();
 		
-		urlListo = new URL("http://localhost:8080/Carrera100REST/Carrera100/llegada?dorsal=" + this.dorsal);
+		urlListo = new URL("http://192.168.0.69:8080/Carrera100REST/Carrera100/llegada?dorsal=" + this.dorsal);
 		
 		HttpURLConnection connListo = null;
 		connListo = (HttpURLConnection) urlListo.openConnection();
@@ -85,7 +85,7 @@ public class Atleta extends Thread {
 
 	void preparado() throws Exception{
 		URL urlPreparado = null;
-		urlPreparado = new URL("http://localhost:8080/Carrera100REST/Carrera100/preparado");
+		urlPreparado = new URL("http://192.168.0.69:8080/Carrera100REST/Carrera100/preparado");
 
 		HttpURLConnection connPreparado = null;
 
@@ -99,7 +99,7 @@ public class Atleta extends Thread {
 	void listo() throws Exception {
 		URL urlListo = null;
 
-		urlListo = new URL("http://localhost:8080/Carrera100REST/Carrera100/listo");
+		urlListo = new URL("http://192.168.0.69:8080/Carrera100REST/Carrera100/listo");
 
 		
 		HttpURLConnection connListo = null;
