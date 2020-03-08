@@ -13,7 +13,7 @@ public class MainCarrera {
 	
 	public static void main(String[] args) throws Exception {
 		
-		int numAtletas=5;
+		int numAtletas=2;
 		ArrayList<Atleta> atletas = new ArrayList<Atleta>();
 		URL url = new URL("http://localhost:8080/Carrera100REST/Carrera100/reinicio?numAtletas="+numAtletas);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -54,13 +54,14 @@ private static void resultado() throws Exception {
 		String linea;
 		// Mientras el BufferedReader se pueda leer, agregar contenido a dorsal
 		while ((linea = rd.readLine()) != null) {
-			dorsal.append(linea);
+			dorsal.append("\t" + linea + "\n");
 		}
 		// Cerrar el BufferedReader
 		rd.close();
 		
 		// Regresar dorsal, pero como cadena, no como StringBuilder
-		System.out.println("FINALCARRERA: "+ dorsal.toString());
+		System.out.println("FINALCARRERA:\n");
+		System.out.println(dorsal.toString());
 
 		}
 	

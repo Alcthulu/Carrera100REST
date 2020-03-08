@@ -72,8 +72,8 @@ public class Carrera100 {
 	@Path("llegada") //ruta al método
 	public String llegada( @QueryParam(value="dorsal") int dorsal) //el método debe retornar String
 	{
-	long tiempoTotal= ((System.currentTimeMillis() - datosCarrera.getInicioCarrera()));
-		String  tiempoDorsal= "Dorsal: "+dorsal+" Tiempo: "+String.format("%d", tiempoTotal);
+		double tiempoTotal= (double)(((double)(System.currentTimeMillis() - (double)datosCarrera.getInicioCarrera()))/1000.);
+		String  tiempoDorsal= "Dorsal: "+dorsal+" Tiempo: "+String.format("%.3f", tiempoTotal);
 		
 		datosCarrera.getLlegadaAtletas().add(tiempoDorsal);
 		
@@ -84,11 +84,12 @@ public class Carrera100 {
 	@Path("resultados") //ruta al método
 	public String resultados() //el método debe retornar String
 	{
-		String salida="";
+		StringBuilder stb = new StringBuilder();
 		for(int i=0;i<datosCarrera.getLlegadaAtletas().size();i++) {
-			salida=salida+datosCarrera.getLlegadaAtletas().get(i)+"\n";
+			stb.append(datosCarrera.getLlegadaAtletas().get(i));
+			stb.append("\n");
 		}
-		return salida;
+		return stb.toString();
 	}
 	@GET //tipo de petición HTTP
 	@Produces(MediaType.TEXT_PLAIN) //tipo de texto devuelto
