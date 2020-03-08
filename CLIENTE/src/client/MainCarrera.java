@@ -31,7 +31,11 @@ public class MainCarrera {
 		for(int i=0; i<numAtletas; i++) {
 			atletas.get(i).start();
 		}
-		TimeUnit.SECONDS.sleep(12);
+		for(int i=0; i<numAtletas; i++) {
+			while(atletas.get(i).isAlive()) {}
+		}
+		//TimeUnit.SECONDS.sleep(12);
+		
 		resultado();
 	}
 	
