@@ -24,6 +24,7 @@ public class Carrera100 {
 	DatosCarrera datosCarrera=new DatosCarrera();
 	static CyclicBarrier preparados;
 	static CyclicBarrier listos;
+	static CyclicBarrier llegada;
 	@GET //tipo de petición HTTP
 	@Produces(MediaType.TEXT_PLAIN) //tipo de texto devuelto
 	@Path("reinicio") //ruta al método
@@ -35,6 +36,7 @@ public class Carrera100 {
 			//System.out.println(salida);
 			preparados=new CyclicBarrier(datosCarrera.getNumAtl());
 			listos=new CyclicBarrier(datosCarrera.getNumAtl());
+			llegada=new CyclicBarrier(datosCarrera.getNumAtl());
 			
 		}
 		return ""+inicioCarrera;
@@ -76,13 +78,14 @@ public class Carrera100 {
 	@GET //tipo de petición HTTP
 	@Produces(MediaType.TEXT_PLAIN) //tipo de texto devuelto
 	@Path("llegada") //ruta al método
-	public String llegada( @QueryParam(value="dorsal") int dorsal) //el método debe retornar String
+	public String llegada( @QueryParam(value="dorsal") int dorsal) throws InterruptedException, BrokenBarrierException //el método debe retornar String
 	{
 		double tiempoTotal= (double)(((double)(System.currentTimeMillis() - (double)datosCarrera.getInicioCarrera()))/1000.);
 		String  tiempoDorsal= "Dorsal: "+dorsal+" Tiempo: "+String.format("%f", tiempoTotal);
 		
 		datosCarrera.getLlegadaAtletas().add(tiempoDorsal);
-		
+		llegada.await();
+
 		return tiempoDorsal;
 	}
 	@GET //tipo de petición HTTP
